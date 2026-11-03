@@ -26,7 +26,7 @@ test('GET and POST /explain validate run counts', async () => {
     for (const response of [await get('abc'), await get(''), await get('1.5'), await get('0'), await get('-1'), await get('101'), await get('1&count=2')]) {
       assert.equal(response.status, 400, 'expected 400 for invalid GET count');
     }
-    for (const response of [await post('"abc"'), await post('1.5', true), await post('0'), await post('-1'), await post('101'), await post('true', true), await post('null', true)]) {
+    for (const response of [await post('"abc"'), await post('1.5', true), await post(0), await post(-1), await post(101), await post('true', true), await post('null', true)]) {
       assert.equal(response.status, 400, 'expected 400 for invalid POST count');
     }
 
